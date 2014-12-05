@@ -1,0 +1,40 @@
+{
+    "name": "de_scenegraph",
+    "description": "Scenegraph implementation for usage with Devisualization.",
+    "copyright": "Copyright © 2014, Richard Andrew Cattermole, Devisualization",
+    "authors": ["Richard Andrew Cattermole"],
+    "homepage": "https://github.com/Devisualization/scenegraph",
+    "license": "MIT",
+    "sourcePaths": [],
+	"subPackages": [
+		{
+			"name": "interfaces",
+			"sourcePaths": ["source/interfaces"],
+			"importPaths": ["source/interfaces"],
+			"dependencies": {
+				"de_window:interfaces": {
+					"optional": true,
+					"version": ">=0.0.2"
+				}
+			}
+		},
+		{
+			"name": "base",
+			"sourcePaths": ["source/base"],
+			"importPaths": ["source/base"],
+			"dependencies": {
+                "de_scenegraph:interfaces": "*"
+            }
+		},
+        {
+            "name": "test",
+            "sourcePaths": ["source/test"],
+            "importPaths": ["source/test"],
+            "targetType": "executable",
+            "dependencies": {
+				"de_window:platform": "*",
+                "de_scenegraph:base": "*"
+            }
+        }
+	]
+}

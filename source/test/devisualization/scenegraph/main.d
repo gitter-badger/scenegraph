@@ -1,20 +1,29 @@
-scenegraph
-===
-Scene graph written in D.
-For purpose in creating a GUI toolkit as well as a general purpose 3d game engine.
-
-Features
------
-* Data driven elements
-* 2D (overlayed) on top of 3D
-* Elements have a type and a hash. Combined to form an id.
-* Element type handles drawing, eventing.
-
-Example
------
-```D
+﻿/*
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2014 Devisualization (Richard Andrew Cattermole)
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 module devisualization.scenegraph.main;
-import devisualization.scenegraph.base;
+import devisualization.scenegraph.base.overlayed;
+import devisualization.scenegraph.interfaces.elements;
 
 void main() {
     import std.stdio;
@@ -37,17 +46,10 @@ void main() {
     graph.updateIdHashes();
     writeln(graph);
     graph.draw();
+
+    test();
 }
-```
 
-If you want to hook the scenegraph into a window's events, pass it into SceneGraph3DOverlayed2D's contructor.
-
-Some stats
------
-9ms for 30300 elements in total, for given code in release mode:
-During iteration and updating of id hashes.
-
-```D
 void test() {
     import std.datetime;
     import std.stdio;
@@ -82,4 +84,3 @@ void test() {
     writeln("Average: ", sw.peek().msecs / 1_000);
     writeln("Average: ", sw.peek().seconds / 1_000);
 }
-```
