@@ -108,37 +108,12 @@ version(Have_de_window_interfaces) {
 }
 
 mixin template DevisualizationWindowSceneGraph() {
-    version(Have_de_window_interfaces) {
+	version(Have_de_window_interfaces) {
         import devisualization.window.interfaces.window;
         import devisualization.window.interfaces.events;
 
         private {
             Windowable window_;
-        }
-        
-        this(Windowable window) {
-            this();
-            window_ = window;
-            
-            window.addOnMouseDown((Windowable, MouseButtons buttons, int x, int y) {
-                onMouseDown(buttons, x, y);
-            });
-            
-            window.addOnMouseMove((Windowable, int x, int y) {
-                onMouseMove(x, y);
-            });
-            
-            window.addOnMouseUp((Windowable, MouseButtons buttons) {
-                onMouseUp(buttons);
-            });
-            
-            window.addOnKeyDown((Windowable, Keys keys, KeyModifiers mods) {
-                onKeyDown(keys, mods);
-            });
-            
-            window.addOnKeyUp((Windowable, Keys keys, KeyModifiers mods) {
-                onKeyUp(keys, mods);
-            });
         }
         
         @property {

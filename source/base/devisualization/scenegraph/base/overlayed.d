@@ -259,5 +259,35 @@ class SceneGraph3DOverlayed2D : SceneGraph3D, SceneGraph2D {
         }
     }
 
-    mixin DevisualizationWindowSceneGraph;
+	// basically this should be in the mixin but it appears to be a bug where it won't work.
+	version(Have_de_window_interfaces) {
+		import devisualization.window.interfaces.window;
+
+		this(Windowable window) {
+			this();
+			window_ = window;
+			
+			window.addOnMouseDown((Windowable, MouseButtons buttons, int x, int y) {
+				onMouseDown(buttons, x, y);
+			});
+			
+			window.addOnMouseMove((Windowable, int x, int y) {
+				onMouseMove(x, y);
+			});
+			
+			window.addOnMouseUp((Windowable, MouseButtons buttons) {
+				onMouseUp(buttons);
+			});
+			
+			window.addOnKeyDown((Windowable, Keys keys, KeyModifiers mods) {
+				onKeyDown(keys, mods);
+			});
+			
+			window.addOnKeyUp((Windowable, Keys keys, KeyModifiers mods) {
+				onKeyUp(keys, mods);
+			});
+		}
+
+	    mixin DevisualizationWindowSceneGraph;
+	}
 }
