@@ -44,7 +44,7 @@ If you want to hook the scenegraph into a window's events, pass it into SceneGra
 
 Some stats
 -----
-9ms for 30300 elements in total, for given code in release mode:
+8ms for 30300 elements in total, for given code in release mode:
 During iteration and updating of id hashes.
 
 ```D
