@@ -1,5 +1,7 @@
 scenegraph
 ===
+
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/Devisualization/scenegraph?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 Scene graph written in D.
 For purpose in creating a GUI toolkit as well as a general purpose 3d game engine.
 
